@@ -5,9 +5,10 @@ import {
   CREATE_STREAM,
   FETCH_STREAM,
   FETCH_STREAMS,
-  DELETE_STEAM,
+  DELETE_STREAM,
   EDIT_STREAM
 } from "./types";
+import history from "../history";
 
 export const signIn = userId => {
   return {
@@ -22,12 +23,16 @@ export const signOut = () => {
   };
 };
 
-export const createStream = formValues => async dispatch => {
-  const response = await streams.post("/streams", formValues);
+export const createStream = formValues => async (dispatch, getState) => {
+  const { userId } = getState().auth;
+  const response = await streams.post("/streams", { ...formValues, userId });
+
   dispatch({
     type: CREATE_STREAM,
     payload: response.data
   });
+
+  history.push("/");
 };
 
 export const getStreams = () => async dispatch => {
@@ -61,7 +66,7 @@ export const deleteStream = id => async dispatch => {
   await streams.delete(`/streams/${id}`);
 
   dispatch({
-    type: DELETE_STEAM,
+    type: DELETE_STREAM,
     payload: id
   });
 };

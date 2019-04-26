@@ -4,6 +4,23 @@
       "title": "My Stream",
       "description": "What a great stream",
       "id": 1
+    },
+    {
+      "title": "Another One",
+      "description": "This one is even better!",
+      "id": 2
+    },
+    {
+      "title": "My Stream About the Universe",
+      "description": "This is about the black hole that was photographed the other day!",
+      "userId": "108118904707092812740",
+      "id": 3
+    },
+    {
+      "title": "A New Stream",
+      "description": "Programmatic Navigation",
+      "userId": "108118904707092812740",
+      "id": 4
     }
   ]
 }
